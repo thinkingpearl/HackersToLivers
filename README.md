@@ -1,2 +1,0 @@
-# HackersToLivers
-AI Notes Summarizer 
