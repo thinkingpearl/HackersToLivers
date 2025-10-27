@@ -1,2 +1,6 @@
-Flask
-gunicorn
+fastapi
+uvicorn
+python-multipart
+transformers
+torch
+pydantic
