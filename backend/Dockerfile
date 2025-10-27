@@ -1,11 +1,20 @@
-FROM python:3.11-slim
+# Use official lightweight Python image
+FROM python:3.10-slim
+
+# Set working directory
 WORKDIR /app
 
-COPY backend/requirements.txt /app/requirements.txt
-RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+# Copy dependencies
+COPY requirements.txt .
 
-RUN pip install --upgrade pip && pip install -r /app/requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend/app /app/app
-EXPOSE 8000
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Copy all backend files
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 5000
+
+# Command to run your app
+CMD ["python", "appmain.py"]
