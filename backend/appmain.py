@@ -1,5 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, Form
-from .extractor import extract_text_from_pdf
+from extractor import extract_text_from_pdf
 from .summarizer import summarize_text
 from dotenv import load_dotenv
 import os
@@ -28,3 +28,4 @@ async def summarize(
 
     result = summarize_text(text, mode=mode, max_bullets=max_bullets, backend=backend_choice)
     return {"summary": result}
+
